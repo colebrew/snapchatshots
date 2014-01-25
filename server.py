@@ -24,11 +24,12 @@ def begin():
 @app.route("/send/<filetype>", methods=['GET', 'POST'])
 def send(filetype):
 	#login 
+	return "success!"
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
 
-	return "success!"
+	#return "success!"
 
 	"""
 	#check that file has a correct ext
