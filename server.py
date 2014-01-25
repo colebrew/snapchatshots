@@ -21,7 +21,7 @@ def begin():
 
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
-@app.route("/send/<filetype>", methods=['POST'])
+@app.route("/send", methods=['POST'])
 def send(filetype):
 	#login 
 	data = request.get_json()
