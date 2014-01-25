@@ -15,6 +15,7 @@ EXTENSIONS = ['jpeg', 'jpg', 'mp4']
 IMG_EXTENSIONS = ['jpeg', 'jpg']
 VID_EXTENSION = ['mp4']
 
+"""
 @app.route("/")
 def begin():
 	return "don't be lazy man!"
@@ -28,6 +29,18 @@ def upload():
 	file.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
 	return "we made it"
 	return redirect(url_for('uploaded_file', filename=filename))
+"""
+
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        file = request.files['file']
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+            return redirect(url_for('uploaded_file',
+                                    filename=filename))
+    return 'oops'
 
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
