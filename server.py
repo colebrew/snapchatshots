@@ -26,8 +26,9 @@ def upload():
 	snap = request.files['file']
 
 	filename = secure_filename(snap.filename)
-	return 'we made it'
+
 	snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+	return 'we made it'
 	return os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename)
 
 #send image or video
