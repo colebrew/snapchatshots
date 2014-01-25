@@ -32,6 +32,8 @@ def login():
 		error = 'Invalid http request'
 	return error
 
+"""
+
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
 @app.route("/send/<filetype>", methods=['POST'])
@@ -43,7 +45,7 @@ def send(filetype):
 
 	return "success!"
 
-	"""
+
 	#check that file has a correct ext
 	filename, ext = name.split('.')
 	if (filetype == "image") and (ext not in IMG_EXTENSIONS):
@@ -69,9 +71,7 @@ def send(filetype):
 	#send to recipient
 	s.send(media_id, data['recipient'])
 	#return "success!"
-	"""
 
-"""
 #getall
 @app.route("/getall")
 def getall():
