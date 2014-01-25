@@ -24,11 +24,8 @@ def begin():
 def upload():
 	#save file on server
 	snap = request.files['file']
-
 	filename = secure_filename(snap.filename)
-
-	snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
-	return 'we made it'
+	#snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
 	return os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename)
 
 #send image or video
