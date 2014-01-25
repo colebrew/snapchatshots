@@ -30,6 +30,7 @@ def send(filetype):
 
 	return "success!"
 
+	"""
 	#check that file has a correct ext
 	filename, ext = name.split('.')
 	if (filetype == "image") and (ext not in IMG_EXTENSIONS):
@@ -38,7 +39,7 @@ def send(filetype):
 	if (filetype == "video") and (ext not in VID_EXTENSIONS):
 		print("invalid video format")
 		continue
-	
+	"""
 
 	#save file on server
 	snap = request.files['file']
