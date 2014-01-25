@@ -4,6 +4,8 @@ import json
 from werkzeug import secure_filename
 from snapchat import Snapchat
 
+import sys
+
 GET_UPLOAD_FOLDER  = '/shotsWebServer/getting_uploads'
 SEND_UPLOAD_FOLDER = '/sending_uploads'
 
@@ -44,9 +46,7 @@ def send(filetype):
 	if (filetype == "video"):
 		snapformat = Snapchat.MEDIA_VIDEO
 
-	media_id = s.upload(snapformat, "/sending_uploads/PartyBus.jpeg")
-
-	return "here at least?"
+	media_id = s.upload(snapformat, "PartyBus.jpeg")
 	
 	#send to recipient
 	s.send(media_id, data['recipient'])
