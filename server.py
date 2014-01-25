@@ -26,6 +26,7 @@ def upload():
 	file = request.files['file']
 	filename = secure_filename(file.filename)
 	file.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+	return "fun"
 	return redirect(url_for('uploaded_file', filename=filename))
 
 #send image or video
