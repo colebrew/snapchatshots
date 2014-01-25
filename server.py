@@ -55,16 +55,17 @@ def getall():
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
-	
+
 
 #validatelogin
-@app.route("/login", methods=['POST', 'GET'])
+@app.route("/login", methods=['POST'])
 def login():
 	#login 
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
 
+	return "hell"
 	#check if logged in
 	if s.loggedin: 
 		return "true";
