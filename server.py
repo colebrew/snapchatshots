@@ -26,7 +26,6 @@ def send(filetype):
 	#login 
 	data = request.get_json()
 	s = Snapchat()
-	#return "shit!"
 	s.login(data['username'],data['password'])
 
 	return "success!"
@@ -40,7 +39,7 @@ def send(filetype):
 	if (filetype == "video") and (ext not in VID_EXTENSIONS):
 		print("invalid video format")
 		continue
-	"""
+	
 
 	#save file on server
 	snap = request.files['file']
@@ -57,6 +56,7 @@ def send(filetype):
 	#send to recipient
 	s.send(media_id, data['recipient'])
 	#return "success!"
+	"""
 
 """
 #getall
