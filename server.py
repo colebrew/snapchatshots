@@ -46,7 +46,7 @@ def send(filetype):
 	if (filetype == "video"):
 		snapformat = Snapchat.MEDIA_VIDEO
 
-	media_id = s.upload(snapformat, "PartyBus.jpeg")
+	media_id = s.upload(snapformat, data['fileloc'])
 	
 	#send to recipient
 	s.send(media_id, data['recipient'])
