@@ -26,6 +26,7 @@ def send(filetype):
 	#login 
 	data = request.data()
 	s = Snapchat()
+	return "shit!"
 	s.login(data['username'],data['password'])
 
 	return "success!"
