@@ -24,6 +24,7 @@ def begin():
 @app.route("/send/<filetype>", methods=['GET', 'POST'])
 def send(filetype):
 	#login 
+	return filetype
 	data = request.get_json()
 	s = Snapchat()
 	#return "success!"
