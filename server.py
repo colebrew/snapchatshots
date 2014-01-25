@@ -19,21 +19,6 @@ VID_EXTENSION = ['mp4']
 def begin():
 	return "don't be lazy man!"
 
-#login function used in all calls 
-@app.route("/login", methods=['POST', 'GET'])
-def login():
-	error = None
-	data = request.get_json()
-	if request.method == 'POST':
-		s = Snapchat()
-		s.login(data['username'],data['password'])
-		return 'made it'
-	else:
-		error = 'Invalid http request'
-	return error
-
-"""
-
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
 @app.route("/send/<filetype>", methods=['POST'])
@@ -44,7 +29,6 @@ def send(filetype):
 	s.login(data['username'],data['password'])
 
 	return "success!"
-
 
 	#check that file has a correct ext
 	filename, ext = name.split('.')
@@ -79,6 +63,16 @@ def getall():
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
-"""
 
 #validatelogin
+@app.route("/login", methods=['POST', 'GET'])
+def login():
+	error = None
+	data = request.get_json()
+	if request.method == 'POST':
+		s = Snapchat()
+		s.login(data['username'],data['password'])
+		return 'made it'
+	else:
+		error = 'Invalid http request'
+	return error
