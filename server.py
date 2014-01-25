@@ -6,9 +6,6 @@ from snapchat import Snapchat
 
 import sys
 
-GET_UPLOAD_FOLDER  = '/shotsWebServer/getting_uploads'
-SEND_UPLOAD_FOLDER = '/sending_uploads'
-
 #create app
 app = Flask(__name__)
 app.config.from_object(__name__)
@@ -27,7 +24,7 @@ def upload():
 	#save file on server
 	file = request.files['file']
 	filename = secure_filename(file.filename)
-	file.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+	file.save(filename)
 	return filename
 	#return redirect(url_for('uploaded_file', filename=filename))
 
