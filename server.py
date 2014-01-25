@@ -19,16 +19,6 @@ VID_EXTENSION = ['mp4']
 def begin():
 	return "don't be lazy man!"
 
-"""
-#getall
-@app.route("/getall")
-def getall():
-	#login
-	data = request.get_json()
-	s = Snapchat()
-	s.login(data['username'],data['password'])
-"""
-
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
 @app.route("/send/<filetype>", methods=['GET', 'POST'])
@@ -63,5 +53,16 @@ def send(filetype):
 	
 	#send to recipient
 	s.send(media_id, data['recipient'])
+	return "success!"
+
+"""
+#getall
+@app.route("/getall")
+def getall():
+	#login
+	data = request.get_json()
+	s = Snapchat()
+	s.login(data['username'],data['password'])
+"""
 
 #validatelogin
