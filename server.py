@@ -34,7 +34,6 @@ def upload():
 @app.route("/send/<filetype>", methods=['POST'])
 def send(filetype):
 	#login 
-	return "success!"
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
