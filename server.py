@@ -5,7 +5,7 @@ from werkzeug import secure_filename
 from snapchat import Snapchat
 
 GET_UPLOAD_FOLDER  = '/shotsWebServer/getting_uploads'
-SEND_UPLOAD_FOLDER = '/shotsWebServer/sending_uploads'
+SEND_UPLOAD_FOLDER = '/sending_uploads'
 
 #create app
 app = Flask(__name__)
