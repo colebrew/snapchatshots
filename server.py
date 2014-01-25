@@ -67,7 +67,7 @@ def login():
 
 	return "hell"
 	#check if logged in
-	if s.loggedin: 
+	if s.loggedin == True: 
 		return "true";
 	else:
 		return "false";
