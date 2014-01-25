@@ -64,7 +64,7 @@ def getall():
 	for snap in snaps:
 		allsnaps.append(s.get_media(snap['id']))
 
-	return "done?"
+	return allsnaps
 
 #validatelogin
 @app.route("/login", methods=['POST'])
