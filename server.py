@@ -20,7 +20,7 @@ def begin():
 	return "don't be lazy man!"
 
 #upload img/vid file for sending 
-@app.route("/upload")
+@app.route("/upload", methods=['POST'])
 def upload():
 	#save file on server
 	snap = request.files['file']
