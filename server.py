@@ -24,7 +24,6 @@ def begin():
 def login():
 	error = None
 	data = request.get_json()
-	return 'made it'
 	if request.method == 'POST':
 		s = Snapchat()
 		s.login(data['username'],data['password'])
