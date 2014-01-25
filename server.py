@@ -52,7 +52,7 @@ def send(filetype):
 	#save file on server
 	snap = request.files['file']
 	filename = secure_filename(snap.filename)
-    snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+	snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
 	
 	#upload file to snapchat
 	if (filetype == "image"):
