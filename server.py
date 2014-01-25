@@ -56,6 +56,15 @@ def getall():
 	s = Snapchat()
 	s.login(data['username'],data['password'])
 
+	#get all snaps for the user 
+	snaps = s.get_snaps()
+
+	#download all snaps 
+	allsnaps = []
+	for snap in snaps:
+		allsnaps.append(s.get_media(snap['id']))
+
+	return allsnaps
 
 #validatelogin
 @app.route("/login", methods=['POST'])
