@@ -18,28 +18,16 @@ VID_EXTENSION = ['mp4']
 @app.route("/")
 def begin():
 	return "don't be lazy man!"
-
-@app.route('/upload', methods=['GET', 'POST'])
-def upload():
-    if request.method == 'POST' and 'photo' in request.files:
-        filename = photos.save(request.files['photo'])
-        rec = Photo(filename=filename, user=g.user.id)
-        rec.store()
-        flash("Photo saved.")
-        return redirect(url_for('show', id=rec.id))
-    return render_template('upload.html')
-
-""" 
+ 
 #upload img/vid file for sending 
 @app.route("/upload", methods=['POST'])
 def upload():
 	#save file on server
 	file = request.files['file']
 	filename = secure_filename(file.filename)
-	#file.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+	file.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
 	return filename
 	#return redirect(url_for('uploaded_file', filename=filename))
-"""
 
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
