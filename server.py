@@ -66,7 +66,7 @@ def login():
 	s.login(data['username'],data['password'])
 
 	#check if logged in
-	if s.loggedin == True: 
+	if s.logged_in == True: 
 		return "true";
 	else:
 		return "false";
