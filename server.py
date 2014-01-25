@@ -23,10 +23,10 @@ def begin():
 @app.route("/upload", methods=['POST'])
 def upload():
 	#save file on server
-	snap = request.files['file']
-	filename = secure_filename(snap.filename)
-	#snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
-	return os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename)
+	file = request.files['file']
+	filename = secure_filename(file.filename)
+	snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+	return redirect(url_for('uploaded_file', filename=filename))
 
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
