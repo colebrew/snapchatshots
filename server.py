@@ -25,7 +25,7 @@ def upload():
 	#save file on server
 	file = request.files['file']
 	filename = secure_filename(file.filename)
-	snap.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
+	file.save(os.path.join(app.config['SEND_UPLOAD_FOLDER'], filename))
 	return redirect(url_for('uploaded_file', filename=filename))
 
 #send image or video
