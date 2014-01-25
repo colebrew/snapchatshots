@@ -40,11 +40,11 @@ def send(filetype):
 
 	#upload file to snapchat
 	if (filetype == "image"):
-		snapformat = "Snapchat.MEDIA_IMAGE"
+		snapformat = Snapchat.MEDIA_IMAGE
 	if (filetype == "video"):
-		snapformat = "Snapchat.MEDIA_VIDEO"
-	return "here at least?"
-	media_id = s.upload(snapformat, data['fileloc'])
+		snapformat = Snapchat.MEDIA_VIDEO
+
+	media_id = s.upload(snapformat, "/sending_uploads/PartyBus.jpeg")
 
 	return "here at least?"
 	
