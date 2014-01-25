@@ -26,7 +26,6 @@ def upload():
 	filename = secure_filename(file.filename)
 	file.save(filename)
 	return filename
-	#return redirect(url_for('uploaded_file', filename=filename))
 
 #send image or video
 #json reqs: {'username', 'password', 'file', 'recipient'}
@@ -56,16 +55,18 @@ def getall():
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
+	
 
 #validatelogin
 @app.route("/login", methods=['POST', 'GET'])
 def login():
-	error = None
+	#login 
 	data = request.get_json()
-	if request.method == 'POST':
-		s = Snapchat()
-		s.login(data['username'],data['password'])
-		return 'made it'
+	s = Snapchat()
+	s.login(data['username'],data['password'])
+
+	#check if logged in
+	if s.loggedin: 
+		return "true";
 	else:
-		error = 'Invalid http request'
-	return error
+		return "false";
