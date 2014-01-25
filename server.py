@@ -38,13 +38,15 @@ def send(filetype):
 	s = Snapchat()
 	s.login(data['username'],data['password'])
 
-	return "here at least?"
+
 	#upload file to snapchat
 	if (filetype == "image"):
 		snapformat = "Snapchat.MEDIA_IMAGE"
 	if (filetype == "video"):
 		snapformat = "Snapchat.MEDIA_VIDEO"
 	media_id = s.upload(snapformat, data['fileloc'])
+
+	return "here at least?"
 	
 	#send to recipient
 	s.send(media_id, data['recipient'])
