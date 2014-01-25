@@ -4,8 +4,8 @@ import json
 from werkzeug import secure_filename
 from snapchat import Snapchat
 
-GET_UPLOAD_FOLDER = './getting_uploads'
-SEND_UPLOAD_FOLDER = './sending_uploads'
+GET_UPLOAD_FOLDER = '/getting_uploads'
+SEND_UPLOAD_FOLDER = '/sending_uploads'
 
 #create app
 app = Flask(__name__)
@@ -27,6 +27,8 @@ def send(filetype):
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
+
+	return "success!"
 
 	"""
 	#check that file has a correct ext
@@ -53,7 +55,7 @@ def send(filetype):
 	
 	#send to recipient
 	s.send(media_id, data['recipient'])
-	return "success!"
+	#return "success!"
 
 """
 #getall
