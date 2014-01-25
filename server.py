@@ -26,10 +26,10 @@ def send(filetype):
 	#login 
 	data = request.get_json()
 	s = Snapchat()
-	return "success!"
+	#return "success!"
 	s.login(data['username'],data['password'])
 
-	#return "success!"
+	return "success!"
 
 	"""
 	#check that file has a correct ext
