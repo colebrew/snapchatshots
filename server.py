@@ -65,7 +65,6 @@ def login():
 	s = Snapchat()
 	s.login(data['username'],data['password'])
 
-	return "hell"
 	#check if logged in
 	if s.loggedin == True: 
 		return "true";
