@@ -37,6 +37,8 @@ def send(filetype):
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
+
+	return "here at least?"
 	#upload file to snapchat
 	if (filetype == "image"):
 		snapformat = "Snapchat.MEDIA_IMAGE"
