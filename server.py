@@ -21,10 +21,13 @@ def begin():
 #validatelogin
 @app.route("/login", methods=['POST'])
 def login():
+	print "here1"
 	#login 
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
+
+	print "here2"
 
 	#check if logged in
 	if s.logged_in == True: 
