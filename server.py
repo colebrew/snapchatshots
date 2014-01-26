@@ -16,12 +16,12 @@ VID_EXTENSION = ['mp4']
 
 @app.route("/")
 def begin():
-	s = Snapchat()
-	s.login("poopinin", "poopinin")
+	# # s = Snapchat()
+	# # s.login("poopinin", "poopinin")
 	
-	#send to recipient
-	media_id = s.upload(Snapchat.MEDIA_IMAGE, "largebar.jpg")
-	s.send(media_id, "ckushna")
+	# #send to recipient
+	# media_id = s.upload(Snapchat.MEDIA_IMAGE, "largebar.jpg")
+	# s.send(media_id, "ckushna")
 
 	return "welcome to shots!"
 
