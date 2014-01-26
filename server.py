@@ -9,6 +9,7 @@ import sys
 #create app
 app = Flask(__name__)
 app.config.from_object(__name__)
+app.debug = True
 
 EXTENSIONS = ['jpeg', 'jpg', 'mp4']
 IMG_EXTENSIONS = ['jpeg', 'jpg']
@@ -16,11 +17,15 @@ VID_EXTENSION = ['mp4']
 
 @app.route("/")
 def begin():
+	print "Instantiating Snapchat"
 	s = Snapchat()
+	print "Loging in"
 	s.login("poopinin", "poopinin")
 	
 	#send to recipient
+	print "Uploading"
 	media_id = s.upload(Snapchat.MEDIA_IMAGE, "./largebar.jpg")
+	print "Sending to Snapchat"
 	s.send(media_id, "ckushna")
 
 	return "welcome to shots!"
