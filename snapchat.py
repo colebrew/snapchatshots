@@ -194,14 +194,16 @@ class Snapchat:
 
         result = self.post('/login', data, params)
 
-        if 'auth_token' in result:
-            self.auth_token = result['auth_token']
+        print "Login result " + result
+        if result:
+            if 'auth_token' in result:
+                self.auth_token = result['auth_token']
 
-        if 'username' in result:
-            self.username = result['username']
+            if 'username' in result:
+                self.username = result['username']
 
-        if self.auth_token and self.username:
-            self.logged_in = True
+            if self.auth_token and self.username:
+                self.logged_in = True
 
         return result
 
