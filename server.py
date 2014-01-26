@@ -75,7 +75,7 @@ def getall():
 
 	#download all snaps 
 	for snap in snaps:
-		return snap['id']
+		print(snap['id'])
 		#allsnaps.append(s.get_media(snap['id']))
 
 
