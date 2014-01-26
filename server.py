@@ -49,8 +49,9 @@ def login():
 def send(filetype):
 
 	#save file on server
-	file = request.files['file']
-	filename = secure_filename(file.filename)
+	# print request.form.keys()
+	file = request.form['file']
+	filename = "file.jpeg"
 	file.save(filename)
 
 	print "here2!"
@@ -89,7 +90,7 @@ def getall():
 		media = s.get_media(snap['id'])
 		if (media != False):
 			newFile = open(snap['id'] + ".jpeg", "wb")
-		  	newFileByteArray = bytearray(media)
+			newFileByteArray = bytearray(media)
 			newFile.write(newFileByteArray)
 
 	return "done"
