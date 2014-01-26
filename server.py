@@ -27,6 +27,7 @@ def login():
 	print "here2"
 	s = Snapchat()
 	print "here3"
+	print data['username']
 	s.login(data['username'],data['password'])
 
 	print "here4"
