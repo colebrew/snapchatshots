@@ -73,13 +73,15 @@ def getall():
 	#get all snaps for the user 
 	snaps = s.get_snaps()
 
-	#download all snaps 
 	for snap in snaps:
-		print(snap['id'])
-		#allsnaps.append(s.get_media(snap['id']))
+		# Download a snap
+		media = s.get_media(snap['id'])
+		if (media != False):
+			newFile = open(snap['id'] + ".jpeg", "wb")
+		  	newFileByteArray = bytearray(media)
+			newFile.write(newFileByteArray)
 
-
-	return "done?"
+	return "done"
 
 def download(s, snap):
     """Download a specific snap, given output from s.get_snaps()."""
