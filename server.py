@@ -32,23 +32,21 @@ def login():
 	else:
 		return "false";
  
-#upload img/vid file for sending 
-@app.route("/upload", methods=['POST'])
-def upload():
+#send image or video
+#json reqs: {'username':'', 'password':'', 'recipient':''}
+@app.route("/send/<filetype>", methods=['POST'])
+def send(filetype):
 	#save file on server
 	file = request.files['file']
 	filename = secure_filename(file.filename)
 	file.save(filename)
-	return filename
 
-#send image or video
-#json reqs: {'username', 'password', 'file', 'recipient'}
-@app.route("/send/<filetype>", methods=['POST'])
-def send(filetype):
 	#login 
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
+
+	print "success!"
 
 	#upload file to snapchat
 	if (filetype == "image"):
@@ -56,7 +54,7 @@ def send(filetype):
 	if (filetype == "video"):
 		snapformat = Snapchat.MEDIA_VIDEO
 
-	media_id = s.upload(snapformat, data['fileloc'])
+	media_id = s.upload(snapformat, filename)
 	
 	#send to recipient
 	s.send(media_id, data['recipient'])
@@ -82,22 +80,3 @@ def getall():
 			newFile.write(newFileByteArray)
 
 	return "done"
-
-def download(s, snap):
-    """Download a specific snap, given output from s.get_snaps()."""
-
-    id = snap['id']
-    name = snap['sender']
-    ts = str(snap['sent']).replace(':', '-')
-
-    result = s.get_media(id)
-
-    if not result:
-        return False
-
-    ext = s.is_media(result)
-    filename = '{}_{}_{}.{}'.format(ts, name, id, ext)
-    path = PATH + filename
-    with open(path, 'wb') as fout:
-        fout.write(result)
-    return True
