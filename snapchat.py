@@ -192,6 +192,8 @@ class Snapchat:
             timestamp
         ]
 
+        print "what the heck"
+
         result = self.post('/login', data, params)
 
         if 'auth_token' in result:
@@ -203,7 +205,7 @@ class Snapchat:
         if self.auth_token and self.username:
             self.logged_in = True
 
-        result
+        return result
 
     def logout(self):
         """Logout of Snapchat."""
