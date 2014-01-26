@@ -23,14 +23,14 @@ def begin():
 def login():
 	print "here1"
 	#login 
-	
+
 	data = request.get_json()
 	print "here2"
 	s = Snapchat()
 	print "here3"
 	print data['username']
 	print data['password']
-	s.login(data['username'],data['password'])
+	#s.login(data['username'],data['password'])
 
 	print "here4"
 
