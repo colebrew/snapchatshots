@@ -23,6 +23,7 @@ def begin():
 def login():
 	print "here1"
 	#login 
+	
 	data = request.get_json()
 	print "here2"
 	s = Snapchat()
