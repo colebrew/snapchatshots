@@ -16,8 +16,8 @@ VID_EXTENSION = ['mp4']
 
 @app.route("/")
 def begin():
-	# # s = Snapchat()
-	# # s.login("poopinin", "poopinin")
+	s = Snapchat()
+	s.login("poopinin", "poopinin")
 	
 	# #send to recipient
 	# media_id = s.upload(Snapchat.MEDIA_IMAGE, "largebar.jpg")
@@ -90,4 +90,5 @@ def getall():
 	return "done"
 
 if __name__ == '__main__':
+    app.debug = True
     app.run(host='0.0.0.0')
