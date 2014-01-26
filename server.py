@@ -21,15 +21,9 @@ def begin():
 #validatelogin
 @app.route("/login", methods=['POST'])
 def login():
-	print "here1"
 	#login 
-
-	# data = request.get_json()
-	print "here2"
 	s = Snapchat()
 	print "here3"
-	#print data['username']
-	#print data['password']
 	s.login(request.args.get('username'),request.args.get('password'))
 
 	print "here4"
@@ -54,9 +48,8 @@ def send(filetype):
 	print "here2!"
 
 	#login 
-	data = request.get_json()
 	s = Snapchat()
-	s.login(data['username'],data['password'])
+	s.login(request.args.get('username'),request.args.get('username'))
 
 	print "here3!"
 
