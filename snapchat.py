@@ -194,7 +194,7 @@ class Snapchat:
 
         result = self.post('/login', data, params)
 
-        print "Login result " + result
+        print "Login result " + str(result)
         if result:
             if 'auth_token' in result:
                 self.auth_token = result['auth_token']
