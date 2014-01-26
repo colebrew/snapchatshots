@@ -49,9 +49,8 @@ def login():
 def send(filetype):
 
 	#save file on server
-	# print request.form.keys()
-	file = request.form['file']
-	filename = "file.jpeg"
+	file = request.files['file']
+	filename = secure_filename(file.filename)
 	file.save(filename)
 
 	print "here2!"
@@ -71,7 +70,7 @@ def send(filetype):
 	media_id = s.upload(snapformat, filename)
 	
 	#send to recipient
-	s.send(media_id, request.args.get('recipient'))
+	s.send(media_id, "ckushna")
 	return "success!"
 
 #getall
