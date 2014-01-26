@@ -24,10 +24,12 @@ def login():
 	print "here1"
 	#login 
 	data = request.get_json()
+	print "here2"
 	s = Snapchat()
+	print "here3"
 	s.login(data['username'],data['password'])
 
-	print "here2"
+	print "here4"
 
 	#check if logged in
 	if s.logged_in == True: 
