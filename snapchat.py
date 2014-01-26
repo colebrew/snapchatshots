@@ -203,7 +203,7 @@ class Snapchat:
         if self.auth_token and self.username:
             self.logged_in = True
 
-        return result
+        result
 
     def logout(self):
         """Logout of Snapchat."""
