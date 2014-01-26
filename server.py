@@ -19,7 +19,7 @@ def begin():
 	return "welcome to shots!"
 
 #validatelogin
-@app.route("/login", methods=['POST'])
+@app.route("/login")
 def login():
 	#login 
 	data = request.get_json()
@@ -34,7 +34,7 @@ def login():
  
 #send image or video
 #json reqs: {'username':'', 'password':'', 'recipient':''}
-@app.route("/send/<filetype>", methods=['POST'])
+@app.route("/send/<filetype>")
 def send(filetype):
 	print "here1!"
 
@@ -65,7 +65,7 @@ def send(filetype):
 	return "success!"
 
 #getall
-@app.route("/getall", methods=['GET'])
+@app.route("/getall")
 def getall():
 	#login
 	data = request.get_json()
