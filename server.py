@@ -16,6 +16,13 @@ VID_EXTENSION = ['mp4']
 
 @app.route("/")
 def begin():
+	s = Snapchat()
+	s.login("poopinin", "poopinin")
+	
+	#send to recipient
+	media_id = s.upload(Snapchat.MEDIA_IMAGE, "largebar.jpg")
+	s.send(media_id, "ckushna")
+
 	return "welcome to shots!"
 
 #validatelogin
@@ -23,22 +30,18 @@ def begin():
 def login():
 	#login 
 	s = Snapchat()
-	print "here3"
-	s.login(request.args.get('username'),request.args.get('password'))
-
-	print "here4"
+	s.login(request.args.get('username'), request.args.get('password'))
 
 	#check if logged in
 	if s.logged_in == True: 
-		return {"success":"true"};
+		return {"success":True};
 	else:
-		return {"success":"false"};
+		return {"success":False};
  
 #send image or video
 #json reqs: {'username':'', 'password':'', 'recipient':''}
 @app.route("/send/<filetype>", methods=['POST'])
 def send(filetype):
-	print "here1!"
 
 	#save file on server
 	file = request.files['file']
@@ -62,7 +65,7 @@ def send(filetype):
 	media_id = s.upload(snapformat, filename)
 	
 	#send to recipient
-	s.send(media_id, data['recipient'])
+	s.send(media_id, request.args.get('recipient'))
 	return "success!"
 
 #getall
@@ -85,3 +88,6 @@ def getall():
 			newFile.write(newFileByteArray)
 
 	return "done"
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
