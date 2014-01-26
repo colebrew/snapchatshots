@@ -48,8 +48,11 @@ def login():
 @app.route("/send/<filetype>", methods=['POST'])
 def send(filetype):
 
+	print "here1"
+
 	#save file on server
-	file = request.files['file']
+	file = request.files['file'] || request.form['file']
+	print "h"
 	filename = secure_filename(file.filename)
 	file.save(filename)
 
@@ -57,7 +60,7 @@ def send(filetype):
 
 	#login 
 	s = Snapchat()
-	s.login(request.args.get('username'),request.args.get('username'))
+	s.login("poopinin","poopinin")
 
 	print "here3!"
 
@@ -68,7 +71,8 @@ def send(filetype):
 		snapformat = Snapchat.MEDIA_VIDEO
 
 	media_id = s.upload(snapformat, filename)
-	
+	print media_id
+
 	#send to recipient
 	s.send(media_id, "ckushna")
 	return "success!"
