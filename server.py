@@ -36,9 +36,9 @@ def login():
 
 	#check if logged in
 	if s.logged_in == True: 
-		return '{"success_true"}';
+		return {"success":"true"};
 	else:
-		return '{"success_false"}';
+		return {"success":"false"};
  
 #send image or video
 #json reqs: {'username':'', 'password':'', 'recipient':''}
