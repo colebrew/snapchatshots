@@ -41,6 +41,8 @@ def send(filetype):
 	filename = secure_filename(file.filename)
 	file.save(filename)
 
+	print "success!"
+
 	#login 
 	data = request.get_json()
 	s = Snapchat()
