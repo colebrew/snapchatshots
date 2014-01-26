@@ -36,19 +36,21 @@ def login():
 #json reqs: {'username':'', 'password':'', 'recipient':''}
 @app.route("/send/<filetype>", methods=['POST'])
 def send(filetype):
+	print "here1!"
+
 	#save file on server
 	file = request.files['file']
 	filename = secure_filename(file.filename)
 	file.save(filename)
 
-	print "success!"
+	print "here2!"
 
 	#login 
 	data = request.get_json()
 	s = Snapchat()
 	s.login(data['username'],data['password'])
 
-	print "success!"
+	print "here3!"
 
 	#upload file to snapchat
 	if (filetype == "image"):
