@@ -16,7 +16,21 @@ VID_EXTENSION = ['mp4']
 
 @app.route("/")
 def begin():
-	return "don't be lazy man!"
+	return "welcome to shots!"
+
+#validatelogin
+@app.route("/login", methods=['POST'])
+def login():
+	#login 
+	data = request.get_json()
+	s = Snapchat()
+	s.login(data['username'],data['password'])
+
+	#check if logged in
+	if s.logged_in == True: 
+		return "true";
+	else:
+		return "false";
  
 #upload img/vid file for sending 
 @app.route("/upload", methods=['POST'])
@@ -49,7 +63,7 @@ def send(filetype):
 	return "success!"
 
 #getall
-@app.route("/getall")
+@app.route("/getall", methods=['GET'])
 def getall():
 	#login
 	data = request.get_json()
@@ -60,22 +74,28 @@ def getall():
 	snaps = s.get_snaps()
 
 	#download all snaps 
-	allsnaps = []
 	for snap in snaps:
-		allsnaps.append(s.get_media(snap['id']))
+		echo(snap['id'])
+		#allsnaps.append(s.get_media(snap['id']))
 
-	return allsnaps
 
-#validatelogin
-@app.route("/login", methods=['POST'])
-def login():
-	#login 
-	data = request.get_json()
-	s = Snapchat()
-	s.login(data['username'],data['password'])
+	return "done?"
 
-	#check if logged in
-	if s.logged_in == True: 
-		return "true";
-	else:
-		return "false";
+def download(s, snap):
+    """Download a specific snap, given output from s.get_snaps()."""
+
+    id = snap['id']
+    name = snap['sender']
+    ts = str(snap['sent']).replace(':', '-')
+
+    result = s.get_media(id)
+
+    if not result:
+        return False
+
+    ext = s.is_media(result)
+    filename = '{}_{}_{}.{}'.format(ts, name, id, ext)
+    path = PATH + filename
+    with open(path, 'wb') as fout:
+        fout.write(result)
+    return True
