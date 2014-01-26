@@ -192,8 +192,6 @@ class Snapchat:
             timestamp
         ]
 
-        print "what the heck"
-
         result = self.post('/login', data, params)
 
         if 'auth_token' in result:
